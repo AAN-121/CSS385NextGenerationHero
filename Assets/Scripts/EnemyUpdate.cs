@@ -78,7 +78,7 @@ public class EnemyUpdate : MonoBehaviour
             Destroy(collider.gameObject);
             alphaValue -= 0.2f;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alphaValue);
-            HeroShoot.eggCount--;
+            // HeroShoot.eggCount--;
         } else if (collider.tag == "Hero") {
             Destroy(this.gameObject);
             GameRun.enemyCount--;

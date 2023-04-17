@@ -11,7 +11,10 @@ public class EggStatus : MonoBehaviour
         Vector3 pos = transform.position;
         if (pos.x > 200 || pos.x < -200 || pos.y > 100 || pos.y < -100) {
             Destroy(this.gameObject);
-            HeroShoot.eggCount--;
         }
+    }
+
+    void OnDestroy() {
+        HeroShoot.eggCount--;
     }
 }

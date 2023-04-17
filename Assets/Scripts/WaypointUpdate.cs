@@ -43,7 +43,7 @@ public class WaypointUpdate : MonoBehaviour
             Destroy(collider.gameObject);
             alphaValue -= 0.25f;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alphaValue);
-            HeroShoot.eggCount--;
+            // HeroShoot.eggCount--;
         }
 	}
 
