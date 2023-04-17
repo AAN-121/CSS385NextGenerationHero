@@ -6,8 +6,6 @@ public class EnemyUpdate : MonoBehaviour
 {
     public GameObject enemyPrefab;
 
-    private float cooldown = 0.05f;
-    private float nextCheck = 0f;
     private float alphaValue = 1.0f;
     private int currentGoal = 0;
     private GameRun game;
@@ -74,26 +72,18 @@ public class EnemyUpdate : MonoBehaviour
         transform.position += mSpeed * Time.smoothDeltaTime * transform.up;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Egg" && Time.time > nextCheck)
-        {
+    void OnTriggerEnter2D(Collider2D collider) {
+        // Egg Collisions
+        if (collider.tag == "Egg") {
+            Destroy(collider.gameObject);
             alphaValue -= 0.2f;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alphaValue);
-            Destroy(collision.gameObject);
             HeroShoot.eggCount--;
-            
-            nextCheck = Time.time + cooldown;
-        }
-
-        if (collision.gameObject.tag == "Hero" && Time.time > nextCheck)
-        {
-            GameRun.enemyCount--;
+        } else if (collider.tag == "Hero") {
             Destroy(this.gameObject);
+            GameRun.enemyCount--;
             touchedCount++;
             destroyedCount++;
-
-            nextCheck = Time.time + cooldown;
         }
-    }
+	}
 }

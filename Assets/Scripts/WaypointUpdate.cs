@@ -6,9 +6,6 @@ public class WaypointUpdate : MonoBehaviour
 {
 
     public GameObject enemyPrefab;
-
-    private float cooldown = 0.05f;
-    private float nextCheck = 0f;
     private float alphaValue = 1.0f;
     private float startX;
     private float startY;
@@ -40,18 +37,15 @@ public class WaypointUpdate : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Egg" && Time.time > nextCheck)
-        {
+    void OnTriggerEnter2D(Collider2D collider) {
+        // Egg Collisions
+        if (collider.tag == "Egg") {
+            Destroy(collider.gameObject);
             alphaValue -= 0.25f;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alphaValue);
-            Destroy(collision.gameObject);
             HeroShoot.eggCount--;
-
-            nextCheck = Time.time + cooldown;
         }
-    }
+	}
 
     public void setSprite(Sprite newSprite)
     {
