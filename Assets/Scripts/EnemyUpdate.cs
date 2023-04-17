@@ -50,12 +50,12 @@ public class EnemyUpdate : MonoBehaviour
 
         // Movement towards the waypoints
         if (game.waypointArray[currentGoal] != null) {
-            PointAtPosition(game.waypointArray[currentGoal].transform.position, 0.25f * Time.smoothDeltaTime);
+            PointAtPosition(game.waypointArray[currentGoal].transform.position, 0.05f * Time.smoothDeltaTime);
 
             // Checking if it has reached the goal
             float distance = Vector2.Distance(game.waypointArray[currentGoal].transform.position, transform.position);
 
-            if (distance < 10) {
+            if (distance < 15) {
                 // Switching goal
                 if (waypointMode == "Sequential") {
                     if (currentGoal == 5) {
