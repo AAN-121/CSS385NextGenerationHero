@@ -1150,3 +1150,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b80bb4f29a9010942b80a7208d842426, type: 3}
   - {fileID: 21300000, guid: 732f3fbd95641b44cbaefcf836af86b1, type: 3}
   - {fileID: 21300000, guid: 8f4a1c4b1e35655428e877e4f3771df6, type: 3}
+  waypointArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

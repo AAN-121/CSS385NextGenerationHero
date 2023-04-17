@@ -10,6 +10,8 @@ public class GameRun : MonoBehaviour
     public GameObject waypointPrefab;
     public TMP_Text screenCounters;
     public Sprite[] spriteArray;
+    public GameObject[] waypointArray;
+    public string mode = "Sequence";
     List<(int, GameObject)> waypointlist = new List<(int, GameObject)>();
     private bool waypointactivity = true;
     private SpriteRenderer sprite;
@@ -38,6 +40,7 @@ public class GameRun : MonoBehaviour
             (int, GameObject) listElement = (i, temp);
             waypointlist.Add(listElement);
             waypointCount++;
+            waypointArray[i] = temp;
         }
     }
 
@@ -78,7 +81,8 @@ public class GameRun : MonoBehaviour
             control = "Mouse";
         }
 
-        screenCounters.SetText("HERO: Drive(" + control + ") TouchedEnemy(" + EnemyUpdate.touchedCount + ") EGG: OnScreen(" + HeroShoot.eggCount + ") ENEMY: Count(" + enemyCount + ") Destroyed(" + EnemyUpdate.destroyedCount + ")");
+        screenCounters.SetText("WAYPOINTS: Mode(" + mode + ") Visible(" + waypointactivity + ") HERO: Drive(" + control + ") TouchedEnemy(" + EnemyUpdate.touchedCount 
+            + ") EGG: OnScreen(" + HeroShoot.eggCount + ") ENEMY: Count(" + enemyCount + ") Destroyed(" + EnemyUpdate.destroyedCount + ")");
     }
 
 }
